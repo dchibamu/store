@@ -34,6 +34,7 @@ spotless {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     runtimeOnly 'org.postgresql:postgresql'
     implementation 'org.liquibase:liquibase-core'
     compileOnly 'org.projectlombok:lombok'
@@ -49,8 +50,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     testAnnotationProcessor 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.6.2'
-
-
+    runtimeOnly 'com.h2database:h2'
+    testImplementation 'com.h2database:h2'
 
 }
 
@@ -70,5 +71,11 @@ tasks.jacocoTestReport {
             fileTree(dir: it,
                     exclude: ['**/mapper/**', '**/StoreApplication.class'])
         })
+    }
+}
+
+tasks.named('bootJar') {
+    layered {
+        enabled = true
     }
 }
