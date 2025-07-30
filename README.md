@@ -21,3 +21,8 @@
 3. Can also introduce content compression.
     - This helps with reducing payload and therefore speeds up request/response time.
 4. Can also implement asynchronous endpoints.
+
+## Pipeline considerations
+   - You need to have code static analysis tools to catch potential bugs
+   - You need to embed software composition analysis tools, container and infrastructure security.
+   - Basically install tools like SonarCube on the pipeline, code quality and automated testing capability
