@@ -1,7 +1,7 @@
 FROM gradle:8.4-jdk17 AS builder
 WORKDIR /app
 COPY . .
-RUN ./gradlew build --no-daemon
+RUN gradle build --no-daemon --refresh-dependencies
 
 FROM eclipse-temurin:17-jre
 WORKDIR /app
