@@ -26,10 +26,14 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
 
-      - name: Set up Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          gradle-version: '8.11.1'
+      - name: Verify Gradle Wrapper
+        run: |
+          if [ ! -f gradle/wrapper/gradle-wrapper.properties ]; then
+            echo "Error: gradle-wrapper.properties missing!"
+            exit 1
+          fi
+          echo "Gradle wrapper version:"
+          grep "distributionUrl" gradle/wrapper/gradle-wrapper.properties
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
