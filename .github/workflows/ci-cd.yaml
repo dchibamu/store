@@ -25,6 +25,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: 'gradle'
+          gradle-version: 8.11.1
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
