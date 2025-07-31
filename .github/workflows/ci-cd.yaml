@@ -64,8 +64,10 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/onlinestore:v1.0.0
-          platforms: linux/amd64, linux/arm64
+          tags: |
+            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/onlinestore:v1.0.0
+            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/onlinestore:latest
+          platforms: linux/amd64,linux/arm64
   deploy:
     needs: docker-build-and-push
     runs-on: ubuntu-22.04
