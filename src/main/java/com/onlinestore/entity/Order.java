@@ -8,15 +8,13 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "\"order\"")
 @EqualsAndHashCode(
@@ -36,12 +34,4 @@ public class Order extends BaseEntity {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private Set<Product> products = new HashSet<>();
-
-    @Override
-    public String toString() {
-        return "Order{" + "id="
-                + getId() + ", description='"
-                + description + '\'' + ", customerId="
-                + (customer != null ? customer.getId() : null) + '}';
-    }
 }
